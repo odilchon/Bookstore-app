@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ───── Dark theme (default) ───── */
+:root,
+[data-theme="dark"] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #0f0f0f;
+  --bg-card: #171717;
+  --bg-input: #0f0f0f;
+  --bg-hover: #1a1a1a;
+  --bg-active: #1a1a1a;
+  --bg-button: #1a1a1a;
+  --bg-button-hover: #252525;
+  --bg-badge: #262626;
+
+  --border-primary: #1f1f1f;
+  --border-secondary: #262626;
+  --border-hover: #3f3f46;
+
+  --text-primary: #ededed;
+  --text-secondary: #d4d4d8;
+  --text-muted: #a1a1aa;
+  --text-subtle: #71717a;
+  --text-faint: #52525b;
+  --text-heading: #ffffff;
+  --text-on-accent: #18181b;
+
+  --accent-bg: #ffffff;
+  --accent-text: #18181b;
+
+  --donut-text: #fafafa;
+
+  --stat-primary-bg: #ffffff;
+  --stat-primary-text: #18181b;
+  --stat-primary-border: #ffffff;
+
+  --input-placeholder: #52525b;
+
+  color-scheme: dark;
+}
+
+/* ───── Light theme ───── */
+[data-theme="light"] {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-input: #f1f3f5;
+  --bg-hover: #e9ecef;
+  --bg-active: #e9ecef;
+  --bg-button: #e9ecef;
+  --bg-button-hover: #dee2e6;
+  --bg-badge: #e9ecef;
+
+  --border-primary: #dee2e6;
+  --border-secondary: #ced4da;
+  --border-hover: #adb5bd;
+
+  --text-primary: #212529;
+  --text-secondary: #343a40;
+  --text-muted: #6c757d;
+  --text-subtle: #868e96;
+  --text-faint: #adb5bd;
+  --text-heading: #000000;
+  --text-on-accent: #ffffff;
+
+  --accent-bg: #212529;
+  --accent-text: #ffffff;
+
+  --donut-text: #212529;
+
+  --stat-primary-bg: #212529;
+  --stat-primary-text: #ffffff;
+  --stat-primary-border: #212529;
+
+  --input-placeholder: #adb5bd;
+
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Smooth transitions for theme switching */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+/* Override transition for elements that shouldn't animate */
+input,
+textarea,
+select,
+button {
+  transition-duration: 0.15s;
 }
